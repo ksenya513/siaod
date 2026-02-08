@@ -11,97 +11,103 @@ void SelectSort2();
 void main(){
     int teorM=3*(n-1);
     int teorC=(n*(n-1))/2;
+    printf("\n");
+    printf("----Массив случайных чисел----");
+    printf("\n");
+    printf("\n");
+    printf("Исходный массив: ");
     FillRand();
     int sum=CheckSum();
     int series=RunNumber();
-    printf("Исходный массив случайных чисел: ");
     PrintMas();
-    printf("КС = %d, Кол-во серий = %d\n",sum,series);
+    printf("КС = %d, Кол-во серий = %d\n",sum,series); 
+    printf("\n");
+    printf("Отсортированный массив(1 способ): ");
     SelectSort1();
-    printf("\n");
-    printf("----Задание 2----");
-    printf("\n");
-    printf("Отсортированный массив: ");
-    sum=CheckSum();
-    series=RunNumber();
     PrintMas();
     printf("КС = %d, Кол-во серий = %d\n",sum,series);
     printf("Теоретическое значение  M:%d, фактическое:%d",teorM,M);
     printf("\n");
     printf("Теоретическое значение  C:%d, фактическое:%d\n", teorC,C);
-    printf(" ----Задание 3----\n");
-    printf("Массив возрастающих чисел: ");//!!!
-    FillInc();
-    sum=CheckSum();
-    series=RunNumber();
-    PrintMas();
-    SelectSort1();
-    sum=CheckSum();
-    series=RunNumber();
-    printf("Отсортированный массив: ");
-    PrintMas();
-    printf("КС = %d, Кол-во серий = %d\n",sum,series);
     printf("\n");
-    printf("Теоретическое значение  M:%d, фактическое:%d",teorM,M);
-    printf("\n");
-    printf("Теоретическое значение  C:%d, фактическое:%d\n", teorC,C);
-    printf("Массив убывающих чисел: ");//!!!
-    FillDec();
-    sum=CheckSum();
-    series=RunNumber();
-    PrintMas();
-    SelectSort1();
-    sum=CheckSum();
-    series=RunNumber();
-    printf("Отсортированный массив: ");
-    PrintMas();
-    printf("КС = %d, Кол-во серий = %d\n",sum,series);
-    printf("\n");
-    printf("Теоретическое значение  M:%d, фактическое:%d",teorM,M);
-    printf("\n");
-    printf("Теоретическое значение  C:%d, фактическое:%d\n", teorC,C);
-
-    printf(" ----Задание 4----\n");
     FillRand();
+    printf("Отсортированный массив(2 способ): ");
+    SelectSort2();
     sum=CheckSum();
     series=RunNumber();
-    printf("Исходный массив случайных чисел: ");
     PrintMas();
     printf("КС = %d, Кол-во серий = %d\n",sum,series);
-    printf("Массив возрастающих чисел: ");//!!!
+    printf("Теоретическое значение  M:%d, фактическое:%d",teorM,M);
+    printf("\n");
+    printf("Теоретическое значение  C:%d, фактическое:%d\n", teorC,C);
+    printf("\n");
+    printf("\n");
+
+    printf("----Массив возрастающих чисел----");
+    printf("\n");
+    printf("\n");
+    printf("Исходный массив: ");
     FillInc();
     sum=CheckSum();
     series=RunNumber();
     PrintMas();
-    SelectSort2();
-    sum=CheckSum();
-    series=RunNumber();
-    printf("Отсортированный массив: ");
+    printf("КС = %d, Кол-во серий = %d\n",sum,series); 
+    printf("\n");
+    printf("Отсортированный массив(1 способ): ");
+    SelectSort1();
     PrintMas();
     printf("КС = %d, Кол-во серий = %d\n",sum,series);
-    printf("\n");
     printf("Теоретическое значение  M:%d, фактическое:%d",teorM,M);
     printf("\n");
     printf("Теоретическое значение  C:%d, фактическое:%d\n", teorC,C);
-    printf("Массив убывающих чисел: ");//!!!
+    printf("\n");
+    FillInc();
+    printf("Отсортированный массив(2 способ): ");
+    SelectSort2();
+    sum=CheckSum();
+    series=RunNumber();
+    PrintMas();
+    printf("КС = %d, Кол-во серий = %d\n",sum,series);
+    printf("Теоретическое значение  M:%d, фактическое:%d",teorM,M);
+    printf("\n");
+    printf("Теоретическое значение  C:%d, фактическое:%d\n", teorC,C);
+    printf("\n");
+   
+    printf("----Массив убывающих чисел----");
+    printf("\n");
+    printf("\n");
+    printf("Исходный массив: ");
     FillDec();
     sum=CheckSum();
     series=RunNumber();
     PrintMas();
-    SelectSort2();
-    sum=CheckSum();
-    series=RunNumber();
-    printf("Отсортированный массив: ");
+    printf("КС = %d, Кол-во серий = %d\n",sum,series); 
+    printf("\n");
+    printf("Отсортированный массив(1 способ): ");
+    SelectSort1();
     PrintMas();
     printf("КС = %d, Кол-во серий = %d\n",sum,series);
-    printf("\n");
     printf("Теоретическое значение  M:%d, фактическое:%d",teorM,M);
     printf("\n");
     printf("Теоретическое значение  C:%d, фактическое:%d\n", teorC,C);
+    printf("\n");
+    FillDec();
+    printf("Отсортированный массив(2 способ): ");
+    SelectSort2();
+    sum=CheckSum();
+    series=RunNumber();
+    PrintMas();
+    printf("КС = %d, Кол-во серий = %d\n",sum,series);
+    printf("Теоретическое значение  M:%d, фактическое:%d",teorM,M);
+    printf("\n");
+    printf("Теоретическое значение  C:%d, фактическое:%d\n", teorC,C);
+    printf("\n");
 
 
 }
 void SelectSort1(){
+    C=0;
+    M=0;
      for (int i=0;i<n-1;i++){
         int k=i;
         for (int j=i+1;j<n;j++){
@@ -118,6 +124,8 @@ void SelectSort1(){
     }
 }
 void SelectSort2(){
+    C=0;
+    M=0;
      for (int i=0;i<n-1;i++){
         int k=i;
         for (int j=i+1;j<n;j++){
@@ -127,10 +135,10 @@ void SelectSort2(){
             }
         }
         if(k!=i){            
-        int move=A[i];
-        A[i]=A[k];
-        A[k]=move;
-        M+=3;
+            int move=A[i];
+            A[i]=A[k];
+            A[k]=move;
+            M+=3;
         }
     }
 
