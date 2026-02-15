@@ -44,7 +44,7 @@ int RunNumber(){
 //Серии в массиве
 void PrintMas(){
     for(int i =0;i<n;i++){
-        printf("%3d", A[i]);
+        printf("%d ", A[i]);
     }    
     printf("\n");
 }
