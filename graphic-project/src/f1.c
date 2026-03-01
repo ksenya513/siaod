@@ -5,7 +5,7 @@
 int n=1;
 int C=0;
 int M=0;
-int A[30];
+int A[100];
 
 void BubbleSort(){
     C=0;
@@ -42,6 +42,54 @@ void SelectSort2(){
     }
 
 }
+    void ShakerSort(){
+    C=0;
+    M=0;
+    int L=0;
+    int R=n-1;
+    int k=n-1;
+    start:
+    for(int j=R;j>L;j--){
+        C++;
+        if(A[j]<A[j-1]){
+            int temp=A[j];
+            A[j]=A[j-1];
+            A[j-1]=temp;
+            k=j;
+            M+=3;
+        }
+    }
+    L=k;
+    for (int j=L;j<R;j++){
+        C++;
+        if(A[j]>A[j+1]){
+            int temp=A[j];
+            A[j]=A[j+1];
+            A[j+1]=temp;
+            k=j;
+            M+=3;
+        }
+    }
+    R=k;
+    if(R>L) goto start;
+    }
+void InsertSort(){
+    C=0;
+    M=0;
+    for (int i=1;i<n;i++){
+        M++;
+        int temp=A[i];
+        int j=i-1;
+        if(A[j]<temp)C++;
+        for(;j>=0 && temp<A[j];C++){
+            M++;
+            A[j+1]=A[j];
+            j=j-1;
+        }
+        M++;
+        A[j+1]=temp;
+    }
+}
 void FillRand(){
     srand(time(0));
     for(int i =0;i<n;i++){
@@ -52,46 +100,65 @@ void FillRand(){
 #define COLOR(r,g,b) (r|(g<<8)|(b<<16)|15<<24)
 int main()
 {
-    initgraph(720,720,"working time and size of array comparison"); 
-    
+    initgraph(1920,1280,"working time and size of array comparison"); 
+    settextstyle(DEFAULT_FONT, HORIZ_DIR, 3); 
     setcolor(DARKGRAY); 
-      moveto(80,460);    
-      lineto(640,460);    
-      line(640,460,620,440);  
-      line(640,460,620,480); 
+      moveto(80,800);    
+      lineto(1800,800);    
+      line(1800,800,1780,840);  
+      line(1800,800,1780,760); 
     
     setcolor(WHITE);
-    outtextxy(660,470,"N");//x
+    outtextxy(1800,750,"N");//x
     
     setcolor(DARKGRAY);
-      moveto(360,80);      
-      lineto(360,640);     
-      line(360,80,380,100);   
-      line(360,80,340,100); 
+      moveto(800,80);      
+      lineto(800,880);     
+      line(800,80,840,100);   
+      line(800,80,760,100); 
     
     setcolor(WHITE);
-      outtextxy(300,50,"Mф+Cф"); //y 
+      outtextxy(730,30,"Mф+Cф"); //y 
     
 
     setcolor(RED);
-      moveto(360,460);     
-    for (n=1; n<30; n +=1){
+      moveto(800,800);     
+    for (n=1; n<70; n +=1){
         FillRand();
         BubbleSort();
-        lineto(360+3*n, 460-(C+M)/2);  
+        lineto(800+10*n, 800-(C+M)/6);  
     } 
 
      setcolor(BLUE);
-      moveto(360,460);     
-    for (n=1; n<30; n +=1){
+      moveto(800,800);     
+    for (n=1; n<70; n +=1){
         FillRand();
         SelectSort2();
-        lineto(360+3*n, 460-(C+M)/2);  
+        lineto(800+10*n, 800-(C+M)/6);  
+    }
+     setcolor(CYAN);
+      moveto(800,800);     
+    for (n=1; n<70; n +=1){
+        FillRand();
+        ShakerSort();
+        lineto(800+10*n, 800-(C+M)/6);  
+    }
+     setcolor(YELLOW);
+      moveto(800,800);     
+    for (n=1; n<70; n +=1){
+        FillRand();
+        InsertSort();
+        lineto(800+10*n, 800-(C+M)/6);  
     }
 
-    outtextxy(600,100,"SelectSort - blue"); 
+    setcolor(BLUE);
+    outtextxy(100,100,"SelectSort - blue"); 
     setcolor(RED);
-    outtextxy(600,140,"BubbleSort - red");
+    outtextxy(100,150,"BubbleSort - red");
+    setcolor(CYAN);
+    outtextxy(100,200,"ShakerSort - cyan");
+    setcolor(YELLOW);
+    outtextxy(100,250,"InsertSort - yellow");
 
     getch();      
     closegraph();  

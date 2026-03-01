@@ -2,8 +2,12 @@
 #include <stdio.h>
 #include <time.h>
 
-const int n = 10;
+int n=10;
 int A[10];
+
+void Size(int N){
+    int* A=realloc(A,(sizeof(int)*N));
+}
 
 void FillInc(){
     for(int i =0;i<n;i++){
