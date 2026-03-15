@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include "graphics.h"
 #include <time.h>
+#include <math.h>
 
 int n=1;
 int C=0;
@@ -90,6 +91,33 @@ void InsertSort(){
         A[j+1]=temp;
     }
 }
+
+void ShellSort(){
+    C=0;
+    M=0;
+    int m=floor(log2((double)n)-1);
+    int H[m];
+    H[0]=1;
+    for (int i=2;i<m+1;i++){
+        H[i-1]=2*H[i-2]+1;
+    }
+    for(int k=H[m-1];m>=0;m--){
+        for(int i=k;i<n;i++){
+            M++;
+            int temp = A[i];
+            int j = i-k;
+            if(A[j]<temp)C++;
+            for(;j>=0&&temp<A[j];C++){
+                M++;
+                A[j+k]=A[j];
+                j=j-k;
+            }
+            M++;
+            A[j+k]=temp; 
+        }
+    }
+
+}
 void FillRand(){
     srand(time(0));
     for(int i =0;i<n;i++){
@@ -150,6 +178,13 @@ int main()
         InsertSort();
         lineto(800+10*n, 800-(C+M)/6);  
     }
+      setcolor(LIGHTMAGENTA);
+      moveto(800,800);     
+    for (n=1; n<100; n +=1){
+        FillRand();
+        ShellSort();
+        lineto(800+10*n, 800-(C+M)/6);  
+    }
 
     setcolor(BLUE);
     outtextxy(100,100,"SelectSort - blue"); 
@@ -159,6 +194,9 @@ int main()
     outtextxy(100,200,"ShakerSort - cyan");
     setcolor(YELLOW);
     outtextxy(100,250,"InsertSort - yellow");
+    setcolor(LIGHTMAGENTA);
+    outtextxy(100,300,"ShellSort - magenta");
+    
 
     getch();      
     closegraph();  
