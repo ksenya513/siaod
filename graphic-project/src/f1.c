@@ -118,6 +118,26 @@ void ShellSort(){
     }
 
 }
+void BinarySearch1(){
+    C=0;
+    int L=0;
+    int R=n-1;
+    found=false;
+    while(L<=R){
+        m=floor((double)(L+R)/2);
+        C++;
+        if(A[m]==x){
+            found=true;
+            break;
+        }
+        C++;
+        if (A[m]<x){
+            L=m+1;
+        }else{
+            R=m-1;
+        }
+    }
+}
 void FillRand(){
     srand(time(0));
     for(int i =0;i<n;i++){
@@ -184,6 +204,14 @@ int main()
         FillRand();
         ShellSort();
         lineto(800+10*n, 800-(C+M)/6);  
+    }
+
+    setcolor(LIGHTRED);
+      moveto(800,800);     
+    for (n=1; n<100; n +=1){
+        FillRand();
+        ShellSort();
+        lineto(800+10*n, 800-(C)/6);  
     }
 
     setcolor(BLUE);
